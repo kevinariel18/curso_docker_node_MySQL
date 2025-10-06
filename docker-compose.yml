@@ -28,11 +28,7 @@ services:
     depends_on:
       - mysql
     environment:
-      - NODE_ENV=development
-      - DB_HOST=mysql
-      - DB_USER=tarea_user
-      - DB_PASSWORD=root
-      - DB_NAME=tareas_db
+      - .env
     volumes:
       - ./backend/:/usr/src/app
 
