@@ -1,0 +1,31 @@
+datasource db {
+  provider="mysql"
+  url = env("DATABASE_URL")
+}
+
+generator client{
+  provider="prisma-client-js"
+}
+
+model Usuario{
+  id Int @id @default(autoincrement())
+  correo String @unique
+  contrasenia String
+  libro Libro[]
+}
+
+model Libro{
+  id Int @id @default(autoincrement())
+  titulo String
+  autor String
+  categoria String
+  description String?
+  usuarioId Int
+  usuario Usuario @relation(fields: [usuarioId], references: [id] )
+}
+
+model TokenRevocado{
+  id Int @id @default(autoincrement())
+  token String @db.VarChar(255) @unique
+  createAt DateTime @default(now())
+}

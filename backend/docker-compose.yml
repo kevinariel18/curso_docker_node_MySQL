@@ -28,7 +28,7 @@ services:
     depends_on:
       - mysql
     env_file:
-      - .env.test
+      - .env
     volumes:
       - ./:/usr/src/app
 
